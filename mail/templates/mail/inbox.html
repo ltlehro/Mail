@@ -1,0 +1,96 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <span>
+                    CS50 Mail
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" id="inbox">Inbox</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="compose">Compose</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="sent">Sent</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="archive">Archived</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" id="user-email">
+                    <a class="nav-link" id="user-email">{{ request.user.email }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary px-4" href="{% url 'logout' %}">Log Out</a>
+                </li>
+            </ul>
+            </div>
+            </div>
+            </nav>
+
+    <hr style="height: 3px; border-radius: 50%;">
+
+    <div id="api-messages">
+        <h5 id="api-result"></h5>
+    </div>
+
+    <div id="email">
+        <div id="details">
+            <div>
+                <span id="from"></span><br>
+                <span id="to"></span><br>
+            </div>
+            <span id="subject"></span>
+            <span id="timestamp"></span> 
+        </div>
+        <br>
+        <p id="content" class="border border-dark rounded"></p>
+        <button id="reply-button" class="btn btn-outline-primary btn-sm mt-2 px-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply-fill" viewBox="0 0 16 16">
+                <path d="M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z"/>
+            </svg>
+            Reply
+        </button>
+        <button id="archive-button" class="btn btn-outline-danger btn-sm mt-2 px-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <span id="archive-status"></span>
+        </button>
+    </div>
+
+    <div id="emails-view">
+    </div>
+
+    <div id="compose-view">
+        <h3 class="page-title">New Email</h3>
+        <form id="compose-form">
+            <div class="form-group form-floating">
+                    <input id="compose-recipients" class="form-control">
+                    <label for="compose-recipients">Recipients</label>
+            </div>
+            <div class="form-group form-floating">
+                <input id="compose-subject" class="form-control">
+                <label for="compose-subject">Subject</label>
+            </div>
+            <textarea id="compose-body" style="height: 30vh;" class="form-control" placeholder="Body"></textarea>
+            <hr style="height: 3px; color: rgba(255, 255, 255, 75%);">
+            <button type="submit" class="btn btn-primary px-5">Send</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}

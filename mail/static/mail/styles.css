@@ -1,0 +1,79 @@
+body {
+    padding: 1rem 0rem;
+}
+
+textarea {
+    min-height: 400px;
+}
+
+.emails {
+    padding: 10px 10px;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subject {
+    font-weight: 500;
+}
+
+.field {
+    margin-right: 0.1rem;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.account-page {
+    text-align: center;
+}
+
+.account-form > div {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#user-email {
+    cursor: default;
+    color: white;
+}
+
+.navbar-brand {
+    padding-bottom: 0;
+}
+
+#logo {
+    margin: 0px 2px;
+}
+
+#api-result {
+    font-size: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+#content {
+    font-size: 1.2rem;
+    backdrop-filter: blur(5rem);
+    padding: 15px 15px;
+}
+
+#compose-form .form-group {
+    margin: 1rem 0;
+}
